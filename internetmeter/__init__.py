@@ -27,3 +27,5 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
 
 from internetmeter._cfgloader import ConfigLoader
+from internetmeter._datastore import DataStore
+from internetmeter._utils import info
