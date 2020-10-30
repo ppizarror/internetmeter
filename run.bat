@@ -1,1 +1,1 @@
-py -3.7 pain.pyw
+py -3.7 main.pyw
