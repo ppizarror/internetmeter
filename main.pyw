@@ -25,3 +25,21 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 -------------------------------------------------------------------------------
 """
 
+from internetmeter import *
+from pyfastcom import PyFastCom
+
+if __name__ == '__main__':
+    # Load the config
+    cfg = ConfigLoader('settings.cfg')
+    verbose = cfg.get('verbose')
+
+    # Get the stats from the web
+    fast = PyFastCom()
+    fast.set_driver_path(cfg.get('webdriver_path'))
+    info(verbose, 'Querying from fast.com')
+    fast.run(timeout=cfg.get('timeout_query'))
+
+    # Store the data
+    results = DataStore(datafile=cfg.get('results_path'), fast=fast)
+    info(verbose, 'Storing results')
+    results.store()
