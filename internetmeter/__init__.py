@@ -2,8 +2,8 @@
 """
 internetmeter
 https://github.com/ppizarror/internetmeter
-LIB
-Library folder.
+INTERNETMETER
+Sources folder.
 
 License:
 -------------------------------------------------------------------------------
@@ -25,3 +25,5 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 -------------------------------------------------------------------------------
 """
+
+from internetmeter._cfgloader import ConfigLoader
