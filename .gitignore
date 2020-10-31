@@ -131,4 +131,6 @@ dmypy.json
 .pyre/
 
 # Other
+errors.log
+results.html
 results.txt
