@@ -29,3 +29,18 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 from internetmeter._cfgloader import ConfigLoader
 from internetmeter._datastore import DataStore
 from internetmeter._utils import info
+
+import internetmeter._version
+
+__author__ = 'ppizarror'
+__contributors__ = []
+__copyright__ = 'Copyright 2020 Pablo Pizarro R. @ppizarror'
+__description__ = "Internet velocity meter tool that let's graph the speed/latency of your internet connection at intervals"
+__email__ = 'pablo@ppizarror.com'
+__keywords__ = 'fast.com selenium internet velocity speed scrapper viewer meter'
+__license__ = 'MIT'
+__url__ = 'https://github.com/ppizarror/internetmeter'
+__url_source_code__ = 'https://github.com/ppizarror/internetmeter'
+__url_documentation__ = 'https://github.com/ppizarror/internetmeter'
+__url_bug_tracker__ = 'https://github.com/ppizarror/internetmeter/issues'
+__version__ = internetmeter._version.ver
