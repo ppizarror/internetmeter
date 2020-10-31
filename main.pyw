@@ -25,7 +25,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 -------------------------------------------------------------------------------
 """
 
-from internetmeter import *
+from internetmeter import ConfigLoader, info, DataStore, __version__
 from pyfastcom import PyFastCom
 
 if __name__ == '__main__':
@@ -33,13 +33,27 @@ if __name__ == '__main__':
     cfg = ConfigLoader('settings.cfg')
     verbose = cfg.get('verbose')
 
+    info(verbose, 'internetmeter v{0}'.format(__version__))
+
     # Get the stats from the web
     fast = PyFastCom()
     fast.set_driver_path(cfg.get('webdriver_path'))
     info(verbose, 'Querying from fast.com')
-    fast.run(timeout=cfg.get('timeout_query'))
+
+    results = DataStore(
+        data_file=cfg.get('results_data_path'),
+        dataview_file=cfg.get('results_viewer_path'),
+        error_file=cfg.get('error_log_path'),
+        fast=fast
+    )
+
+    # noinspection PyBroadException
+    try:
+        fast.run(timeout=cfg.get('timeout_query'))
+    except:
+        results.log_error('Failed to connect to server')
+        exit()
 
     # Store the data
-    results = DataStore(datafile=cfg.get('results_path'), fast=fast)
     info(verbose, 'Storing results')
     results.store()
