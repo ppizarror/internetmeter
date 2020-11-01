@@ -83,6 +83,7 @@ class ConfigLoader(object):
 
             self._cfg[jkey] = j
             k += 1
+        d.close()
 
     def get_size(self) -> int:
         """
