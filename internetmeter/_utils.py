@@ -25,6 +25,20 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 -------------------------------------------------------------------------------
 """
 
+from datetime import datetime
+from internetmeter._cfgloader import ConfigLoader
+from typing import Tuple
+
+# Load the date configs
+_cfg = ConfigLoader('settings.cfg')
+
+
+def get_date() -> Tuple[str, str]:
+    """
+    Return date in day/hour strings.
+    """
+    return datetime.today().strftime(_cfg.get('time_day')), datetime.today().strftime(_cfg.get('time_hour'))
+
 
 def info(verbose: bool, msg: str) -> None:
     """
@@ -34,4 +48,5 @@ def info(verbose: bool, msg: str) -> None:
     :param msg: Message
     """
     if verbose:
-        print('[LOG] {0}'.format(msg))
+        _, hour = get_date()
+        print('{0} [LOG] {1}'.format(hour, msg))

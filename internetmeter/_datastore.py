@@ -25,7 +25,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 -------------------------------------------------------------------------------
 """
 
-from datetime import datetime
+from internetmeter._utils import get_date
 from pyfastcom import PyFastCom
 import os
 
@@ -72,8 +72,9 @@ class DataStore(object):
         """
         assert self._fast.ready(), 'Fast results not ready'
         with open(self._data_file, 'a') as myfile:
-            myfile.write('{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\t{7}\t{8}\n'.format(
-                datetime.today().strftime('%Y-%m-%d\t%H:%M:%S'),
+            day, hour = get_date()  # day/hour
+            myfile.write('{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\t{7}\t{8}\t{9}\n'.format(
+                day, hour,
                 self._fast.get_download_speed()[0],
                 self._fast.get_download_speed()[1],
                 self._fast.get_upload_speed()[0],
@@ -91,4 +92,5 @@ class DataStore(object):
         :param error_name: Name of the error
         """
         with open(self._error_file, 'a') as myfile:
-            myfile.write('{0}\t{1}\n'.format(datetime.today().strftime('%Y-%m-%d %H:%M:%S'), error_name))
+            day, hour = get_date()
+            myfile.write('{0} {1}\t{2}\n'.format(day, hour, error_name))
