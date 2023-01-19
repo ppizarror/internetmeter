@@ -44,10 +44,10 @@ The format is (separated by **\t** - tab):
 - Upload latency value
 - Upload latency unit
 
-## Author
-
-[Pablo Pizarro R.](https://ppizarror.com) | 2020
-
 ## License
 
 This project is licensed under MIT [https://opensource.org/licenses/MIT/](https://opensource.org/licenses/MIT/)
+
+## Author
+
+[Pablo Pizarro R.](https://ppizarror.com) | 2020
